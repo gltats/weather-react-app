@@ -1,16 +1,11 @@
-import React from "react";
-import Weather from "./Weather";
-import "./App.css";
+import './App.css';
 
 
 
 
 export default function App() {
-  return (
-  <div className="App">
-    <div className="container">
-        <Weather defaultCity="Warsaw" />
-    
+  return <div className="App">
+    Weather App
     <footer>
     <a href="https://github.com/gltats/weather-react-app"
     target="_blank">
@@ -18,10 +13,7 @@ export default function App() {
     </a>
     {" "}by Tatiana Gomes
     </footer>
-    
-    </div>
-    </div>
-    );
+    </div>;
 }
 
 
