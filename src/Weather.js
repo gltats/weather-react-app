@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
-//import WeatherForecast from "./WeatherForecast";
+import Forecast from "./Forecast";
 import axios from "axios";
-//import "./Weather.css";
+import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -11,13 +11,15 @@ export default function Weather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      temperature: response.data.main.temp,
-      humidity: response.data.main.humidity,
+      city: response.data.name,
+      temperature: Math.round(response.data.main.temp),
+      wind: Math.round(response.data.wind.speed),
+      humidity: Math.round(response.data.main.humidity),
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      icon: response.data.weather[0].icon,
-      wind: response.data.wind.speed,
-      city: response.data.name,
+      icon:response.data.weather[0].icon,
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,  
     });
   }
 
@@ -26,41 +28,80 @@ export default function Weather(props) {
     search();
   }
 
+
   function handleCityChange(event) {
     setCity(event.target.value);
   }
 
-  function search() {
-    const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  function callingAxios(apiUrl){
     axios.get(apiUrl).then(handleResponse);
+}
+
+
+  function search() {
+    const apiKey = "a78ac71707c8cfe476f9948adb35650f";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    callingAxios(apiUrl);
   }
+
+  function handlePosition(position){
+    let latidude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let apiKey = "a78ac71707c8cfe476f9948adb35650f";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latidude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+    callingAxios(apiUrl);
+}
+
+function handleLocation(event){
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(handlePosition);
+}
+  
+
 
   if (weatherData.ready) {
     return (
       <div className="Weather">
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-9">
+        <section className="overlay">
+        <div className="row">
+        <div className="col-9">
+        <form id="search-form"onSubmit={handleSubmit}>
               <input
                 type="search"
                 placeholder="Enter a city.."
-                className="form-control"
-                autoFocus="on"
+                autoComplete="off"
+                className="city"
+                id="search-input"
                 onChange={handleCityChange}
               />
-            </div>
-            <div className="col-3">
-              <input
-                type="submit"
-                value="Search"
-                className="btn btn-primary w-100"
-              />
-            </div>
-          </div>
         </form>
+        </div>
+        <div className="col-2">
+        <button 
+            type="submit"
+            className="btn btn-outline-light btn-sm"
+            id="location-button"
+            onClick={handleLocation}>
+            Current location
+        </button>
+        
+        </div>
+        </div>
         <WeatherInfo data={weatherData} />
+        </section>
+        <section className="update">
+        <hr className="top"/>
+         <span>
+            <strong> Updated at: 23:44</strong>
+         </span>
+        <hr className="bottom" />
+      </section>
+      <section className="overlay">
+      <Forecast city={weatherData.city} />
+      </section>
+      
       </div>
+      
     );
   } else {
     search();
