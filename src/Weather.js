@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import Forecast from "./Forecast";
+import UpdatedTime from "./UpdatedTime";
 import axios from "axios";
 import "./Weather.css";
 
@@ -92,7 +93,7 @@ function handleLocation(event){
         <section className="update">
         <hr className="top"/>
          <span>
-            <strong> Updated at: 23:44</strong>
+            <strong> <UpdatedTime /> </strong>
          </span>
         <hr className="bottom" />
       </section>

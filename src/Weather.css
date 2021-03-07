@@ -1,41 +1,56 @@
 
 input {
+   display: inline;
+  background-image: url(img/search-solid.svg);
     background-position: 25px 10px;
     background-size: 20px;
     background-repeat: no-repeat;
     text-align: center;
-    margin: 60px 0 20px 10px;
+    margin: 30px 0 20px 10px;
     color: black;
-    background-color: rgba(182, 169, 169, 0.247);
-    border: 1px solid black;
-    border-radius: 25px 25px;
+    background-color: transparent;
+    border: 1px solid #f8f9fa;
+    border-radius: 10px;
     padding: 10px;
     transition: all 200ms ease-in-out;
     cursor: pointer;
+    box-shadow: 4px 4px 2px #bfbfbf;
+  
+  }
+  input:hover {
+    width: 50%;
   }
   
   input:focus {
+    outline: none;
     width: 100%;
-    border: 2px solid #555;
+    background-color: white;
   }
 
-  button{
-    border-radius: 25px 25px;
-    box-shadow: 4px 4px 2px #bfbfbf;
-    margin: 60px 0 20px 10px;
-    background-color: rgba(182, 169, 169, 0.247);
-    border: 1px solid #27ade2;
-    color: #27ade2;
-    font-size: 16px;
-    line-height: 22px;
-    padding: 10px 20px;
+  #location-button{
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
     text-decoration: none;
-    transition: all 200ms ease;
+    vertical-align: middle;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+    box-shadow: 4px 4px 2px #bfbfbf;
+    margin: 30px 0 20px 10px;
+    box-sizing: border-box;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 10px;
+    color: #f8f9fa;
+    border-color: #f8f9fa;
   }
-  
-  button:hover {
-    color: white;
-    background: #27ade2;
+
+  #location-button:hover {
+    color: black;
+    background-color: white;
     cursor: pointer;
   }
 

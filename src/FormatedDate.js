@@ -11,18 +11,26 @@ export default function FormatedDate(props) {
     "Saturday"
   ];
   let day = days[props.date.getDay()];
-  let hours = props.date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  
-  let minutes = props.date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
+  let dates = props.date.getDate();
+  let months = [
+    "Jan",
+    "Feb",
+    "March",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+  let month = months[props.date.getMonth()];
+ 
   return (
     <div>
-      {day}, {hours}:{minutes}
+      <strong> {day} </strong> <br /> {month}, {dates}
     </div>
   );
 }

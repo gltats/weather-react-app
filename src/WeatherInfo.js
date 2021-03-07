@@ -3,27 +3,27 @@ import FormatedDate from "./FormatedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
 
+import "./WeatherInfo.css";
 
 export default function WeatherInfo(props) {
   return (
     <section className="today">
-      <h1>
-        <span id="city-name">{props.data.city}</span>
-        <i className="fas fa-map-marker-alt"></i>
+      <h1 id="city-name">
+        {props.data.city}
       </h1>
       <div className="row">
         <div className="col-4">
           <div className="grades">
-            <strong className="todayTemperature" id="today-temperature">
+            <strong className="todayTemperature">
                 <WeatherTemperature celsius={props.data.temperature} />
             </strong>
 
             <div className="row">
               <div className="col-6">
-                Wind: <span id="wind"> {props.data.wind}</span> km/h
+                <span className="WindHum">Wind: <br /> {props.data.wind}km/h 🌬</span>
               </div>
               <div className="col-6">
-                Hum.: <span id="humidity"> {props.data.humidity} </span> %
+                 <span className="WindHum">Hum.: <br />  {props.data.humidity}%💧</span> 
               </div>
             </div>
           </div>
@@ -34,11 +34,9 @@ export default function WeatherInfo(props) {
         <div className="col-4">
           <div className="todayInfo">
             <div id="date">
-              <strong className="today">Today</strong>
-              <br />
               <FormatedDate date={props.data.date} />
             </div>
-            <div className="weatherDescription" id="weather-description">
+            <div className="weatherDescription">
             {props.data.description}
             </div>
           </div>
