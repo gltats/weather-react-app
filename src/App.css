@@ -1,4 +1,5 @@
 body{
+
     padding: 50px 40px;
     background: linear-gradient(
       to bottom right,
@@ -13,6 +14,10 @@ section.overlay {
     padding: 10px;
     margin-bottom: 20px;
   }
-  
+
+footer{
+  text-align: center;
+  color: rgba(71, 67, 67, 0.712);
+}
 
 

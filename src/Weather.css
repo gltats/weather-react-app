@@ -62,8 +62,12 @@ section.update {
 
 hr.top {
   margin-bottom: 0%;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
 hr.bottom{
   margin-top: 0%;
+  border: 2px solid;
+  border-radius: 5px;
 }
