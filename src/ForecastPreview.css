@@ -8,3 +8,7 @@
     font-weight: 600;
     font-size: 16px;
 }
+
+.ForecastPreview #icon canvas {
+    max-width: 40px;
+}

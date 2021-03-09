@@ -19,9 +19,9 @@ export default function ForecastPreview(props) {
     <div className="ForecastPreview col">
       <h5 className="forecastHours">{hours()}</h5>
       <div className="forecastInfo">  
-      <WeatherIcon className="forecastIcon" code={props.data.weather[0].icon} />  <br /> 
-      {temperatureMinMax()} <br /> 
-      {props.data.main.humidity} % 💧 <br />
+      <div id="icon"> <WeatherIcon  code={props.data.weather[0].icon} /></div>
+      <div>{temperatureMinMax()} </div>
+      <div>{props.data.main.humidity} % 💧 </div>
       </div>
     </div>
   );
