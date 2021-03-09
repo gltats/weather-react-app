@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ForecastPreview from "./ForecastPreview";
 import axios from "axios";
 import "./Forecast.css";
+import Loader from "react-loader-spinner";
 
 export default function Forecast(props) {
   const [loaded, setLoaded] = useState(false);
@@ -27,6 +28,15 @@ export default function Forecast(props) {
       let url = `https://api.openweathermap.org/data/2.5/forecast?q=${props.city}&appid=${apiKey}&units=metric`;
       axios.get(url).then(handleForecast);
   
-      return null;
+      return(
+        <Loader
+          className="loader"
+          type="Watch"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={3000} //3 secs
+        />
+      );
     }
   }

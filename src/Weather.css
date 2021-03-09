@@ -71,3 +71,7 @@ hr.bottom{
   border: 2px solid;
   border-radius: 5px;
 }
+
+.loader{
+  text-align: center;
+}

@@ -4,6 +4,8 @@ import Forecast from "./Forecast";
 import UpdatedTime from "./UpdatedTime";
 import axios from "axios";
 import "./Weather.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -24,6 +26,9 @@ export default function Weather(props) {
     });
   }
 
+ 
+
+    
   function handleSubmit(event) {
     event.preventDefault();
     search();
@@ -57,7 +62,7 @@ function handleLocation(event){
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(handlePosition);
 }
-  
+
 
 
   if (weatherData.ready) {
@@ -92,8 +97,8 @@ function handleLocation(event){
         </section>
         <section className="update">
         <hr className="top"/>
-         <span>
-            <strong> <UpdatedTime /> </strong>
+         <span >
+            <strong> <UpdatedTime date={weatherData.date} /></strong>
          </span>
         <hr className="bottom" />
       </section>
@@ -106,6 +111,15 @@ function handleLocation(event){
     );
   } else {
     search();
-    return "Loading...";
+    return (
+      <Loader
+      className="loader"
+        type="Watch"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        timeout={8000} //3 secs
+      />
+    );
   }
 }
